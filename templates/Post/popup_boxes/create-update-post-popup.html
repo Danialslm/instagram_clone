@@ -1,0 +1,18 @@
+<div class="post-form">
+    <div class="title">
+        <h3></h3>
+    </div>
+    <form action="" class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content-input">
+            <span id="label">Photo : </span>
+            <input type="file" name="content" id="id_content">
+        </div>
+        <div class="caption-input">
+            <textarea name="caption" cols="40" rows="10" id="id_caption" placeholder="Caption(optional)..."></textarea>
+        </div>
+        <div class="create-update">
+            <button></button>
+        </div>
+    </form>
+</div>

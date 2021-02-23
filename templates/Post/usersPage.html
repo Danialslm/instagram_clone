@@ -1,0 +1,75 @@
+{% extends 'Post/base.html' %}
+{% load static %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'AllStaticFiles/css/usersPage-ownPage.css' %}">
+{% endblock %}
+{% block main %}
+    {% include 'Post/popup_boxes/detail-post-popup.html' %}
+
+    <div class="container">
+        <div class="detail-container">
+            <div class="profile-photo">
+                <img src="{{ User.profile.url }}" alt="{{ User.username }}">
+            </div>
+            <div class="detail">
+                <div class="meta">
+                    <div class="username">
+                        <h1>{{ User.username }}</h1>
+                    </div>
+                    <div class="follow-unfollow">
+                        <button data-href="{% url 'user:follow_unfollow' User.username %}"
+                        data-phref="{% url 'user:following_json' User.username %}"></button>
+                    </div>
+                </div>
+                <div class="follower-following">
+                    <div class="post-count">
+                        <span>{{ post_count }} post</span>
+                    </div>
+                    <div class="followers-count">
+                        <span>{{ User.followers_count }} followers</span>
+                    </div>
+                    <div class="following-count">
+                        <span>{{ User.following_count }} following</span>
+                    </div>
+                </div>
+                <div class="biography">
+                    <span>
+                        {% if User.biography %}
+                            {{ User.biography }}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-responsive">
+            <div class="post-count">
+                <span>{{ post_count }} post</span>
+            </div>
+            <div class="followers-count">
+                <span>{{ User.followers_count }} followers</span>
+            </div>
+            <div class="following-count">
+                <span>{{ User.following_count }} following</span>
+            </div>
+        </div>
+        <div class="posts-container">
+            {% for objects in object_list %}
+                <div class="post-row">
+                    {% for object in objects %}
+                        <div class="post">
+                            <img src="{{ object.content.url }}" alt="{{ object.caption }}"
+                            data-pk="{{ object.pk }}"
+                            data-href="{% url 'post:like' object.pk %}"
+                            data-phref="{% url 'post:like_json' object.pk %}">
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'AllStaticFiles/js/follow-unfollow.js' %}"></script>
+    <script src="{% static 'AllStaticFiles/js/post-detail.js' %}"></script>
+    <script src="{% static 'AllStaticFiles/js/like-dislike.js' %}"></script>
+{% endblock %}

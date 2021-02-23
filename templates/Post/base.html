@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.15.2-web/css/all.css' %}">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'AllStaticFiles/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'AllStaticFiles/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'AllStaticFiles/css/popup-boxes.css' %}">
+    {% block link %}
+    {% endblock %}
+</head>
+<body>
+<!-- Navbar -->
+{% include 'Post/navbar.html' %}
+{% include 'Post/popup_boxes/create-update-post-popup.html' %}
+{% include 'Post/popup_boxes/delete-post-popup.html' %}
+<!-- Main -->
+{% block main %}
+{% endblock %}
+
+<script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+<script src="{% static 'AllStaticFiles/js/script.js' %}"></script>
+<script src="{% static 'AllStaticFiles/js/post-form.js' %}"></script>
+{% block script %}
+{% endblock %}
+</body>
+</html>

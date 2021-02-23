@@ -1,0 +1,31 @@
+{% load static %}
+<div class="nav-container">
+    <div class="nav">
+        <div class="logo">
+            <a href="{% url 'post:home' %}"><img src="{% static 'AllStaticFiles/images/instagram.png' %}"
+                                                 alt="instagram"></a>
+        </div>
+        <div class="shortcuts">
+            <div class="home">
+                <a href="{% url 'post:home' %}"><i class="fas fa-home fa-2x" title="Home"></i></a>
+            </div>
+            <div class="explore">
+                <a href="{% url 'post:explore' %}"><i class="fas fa-search fa-2x" title="Explore"></i></a>
+            </div>
+            <div class="create-post">
+                <i class="fas fa-camera fa-2x" title="Create post"></i>
+            </div>
+            <div class="profile-popup">
+                <i class="fas fa-user fa-2x"></i>
+                <div class="submenu">
+                    <a class="profile" href="{% url 'post:user_page' user.username %}">
+                        <span><i class="fas fa-user"></i> Profile</span>
+                    </a>
+                    <a class="logout" href="{% url 'logout' %}">
+                        <span><i class="fas fa-sign-out-alt"></i> Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

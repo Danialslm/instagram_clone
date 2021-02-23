@@ -1,0 +1,23 @@
+<div class="edit-profile-popup">
+    <div class="title">
+        <h3>Update profile
+            <span id="close"></span></h3>
+    </div>
+    <form action="" class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="username-input">
+            <input type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Username">
+        </div>
+        <div class="profile-input">
+            <span id="label">Profile : </span>
+            <input type="file" name="profile" id="id_profile">
+        </div>
+        <div class="bio-input">
+            <textarea name="biography" cols="40" rows="10" id="id_biography"
+                      placeholder="Biography(optional)..."></textarea>
+        </div>
+        <div class="update">
+            <button>Update</button>
+        </div>
+    </form>
+</div>

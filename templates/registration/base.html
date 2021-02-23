@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>{% block title %}
+
+    {% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'registration/css/styles.css' %}">
+</head>
+
+<body>
+<div class="container">
+    {% block main %}
+
+    {% endblock %}
+</div>
+<script src="{% static 'registration/js/form-controler.js' %}"></script>
+</body>
+
+</html>

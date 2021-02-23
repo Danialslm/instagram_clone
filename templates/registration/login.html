@@ -1,0 +1,34 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+    Login
+{% endblock %}
+{% block main %}
+    <div class="form-box">
+        <div class="title-container">
+            <div class="title">
+                <img src="{% static 'registration/images/instagram.png' %}" alt="instagram">
+                <h2>Login</h2>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="form">
+                <form method="post">
+                    {{ form.non_field_errors }}
+                    {% csrf_token %}
+                    <div class="username-input">
+                        {{ form.username|attr:"id:username"|attr:"placeholder:Username"|attr:"class:input"|attr:"class:input" }}
+                    </div>
+                    <div class="password-input">
+                        {{ form.password|attr:"id:pasword"|attr:"placeholder:Password"|attr:"class:input"|attr:"class:input" }}
+                    </div>
+                    <div class="submit">
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <span>Don't have an account? <a href="{% url 'user:register' %}">Register</a></span>
+    </div>
+{% endblock %}

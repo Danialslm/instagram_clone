@@ -1,0 +1,12 @@
+<div class="delete-popup">
+    <div class="title">
+        <h3>Delete post <span id="close" style="float: right"></span></h3>
+    </div>
+    <div class="body">
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure you want to delete it?</p>
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+</div>

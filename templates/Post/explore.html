@@ -1,0 +1,48 @@
+{% extends 'Post/base.html' %}
+{% load static %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'AllStaticFiles/css/explore-home.css' %}">
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="post-container">
+            <div class="posts">
+                {% for object in object_list %}
+                    <article class="post">
+                        <header class="post-header">
+                            <div class="profile">
+                                <img src="{{ object.publisher.profile.url }}" alt="user profile">
+                            </div>
+                            <div class="username">
+                                    <span><a href="{% url 'post:user_page' object.publisher.username %}">
+                                    {{ object.publisher.username }}</a></span>
+                            </div>
+                        </header>
+                        <div class="post-image">
+                            <img src="{{ object.content.url }}" alt="{{ object.caption }}">
+                        </div>
+                        <div class="post-like">
+                            <button class="like-dislike" data-phref="{% url 'post:like_json' object.pk %}"
+                                    data-href="{% url 'post:like' object.pk %}"><i class="fa-heart fa-2x"></i></button>
+                            <span></span>
+                        </div>
+                        <div class="post-caption">
+                            <a href="{% url 'post:user_page' object.publisher.username %}">
+                                <b>{{ object.publisher.username }}</b>
+                            </a>
+                            <span>{{ object.caption }}</span>
+                        </div>
+                        <div class="post-published">
+                            <time>{{ object.published }}</time>
+                        </div>
+                    </article>
+                {% empty %}
+                    <h1 id="no-post">There isn't any post to show.</h1>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'AllStaticFiles/js/like-dislike.js' %}"></script>
+{% endblock %}
